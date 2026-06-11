@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — Team Workload Visualizer for Jira</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         max-width: 760px; margin: 40px auto; padding: 0 20px; color: #172B4D; line-height: 1.6; }
+  h1 { font-size: 28px; } h2 { font-size: 20px; margin-top: 32px; }
+  .meta { color: #626F86; font-size: 14px; }
+  code { background: #F1F2F4; padding: 1px 5px; border-radius: 3px; font-size: 90%; }
+</style>
+</head>
+<body>
+<h1>Privacy Policy</h1>
+<p class="meta">Team Workload Visualizer for Jira · Last updated: 10 June 2026</p>
+
+<h2>Overview</h2>
+<p>Team Workload Visualizer for Jira ("the app") is built entirely on
+<a href="https://www.atlassian.com/platform/forge">Atlassian Forge</a> and runs
+exclusively inside Atlassian's cloud infrastructure. <strong>The app has no
+external servers and transmits no data outside of Atlassian.</strong></p>
+
+<h2>What data the app processes</h2>
+<p>When you open the dashboard, the app reads the following data from your
+Jira site via the Jira Cloud REST API, <strong>on your behalf and with your
+permissions</strong> (you only ever see issues and projects you are allowed
+to see in Jira):</p>
+<ul>
+  <li>Projects (name, key, avatar)</li>
+  <li>Issues (summary, status, priority, due date, resolution date, story
+      points, issue type)</li>
+  <li>Assignees (display name, avatar) and your own locale setting</li>
+</ul>
+<p>This data is <strong>displayed only and never stored</strong> by the app.
+It is fetched fresh on every page load.</p>
+
+<h2>What data the app stores</h2>
+<p>The app stores only its own configuration in
+<a href="https://developer.atlassian.com/platform/forge/runtime-reference/storage-api/">Forge
+Storage</a>, hosted by Atlassian within your Atlassian product's data
+boundary:</p>
+<ul>
+  <li><strong>Team settings</strong> (overload threshold, visible projects,
+      "recently done" period) — editable by Jira administrators only</li>
+  <li><strong>Personal preference</strong> (your chosen display language),
+      keyed by your Atlassian account ID</li>
+</ul>
+<p>No issue data, names, emails or other personal data are persisted. All
+stored data is deleted by Atlassian when the app is uninstalled.</p>
+
+<h2>Data sharing and third parties</h2>
+<p>None. The app declares <strong>zero external egress</strong> in its Forge
+manifest, which Atlassian enforces technically: the app cannot send data to
+any non-Atlassian system. The app contains no analytics, no tracking and no
+cookies of its own.</p>
+
+<h2>Permissions (scopes)</h2>
+<ul>
+  <li><code>read:jira-work</code> — read projects and issues</li>
+  <li><code>read:jira-user</code> — read user display names/avatars and your locale</li>
+  <li><code>storage:app</code> — store the settings described above</li>
+</ul>
+<p>The app requests no write access to Jira and cannot modify your issues.</p>
+
+<h2>GDPR</h2>
+<p>The app processes personal data (assignee display names, avatars, account
+IDs) solely inside Atlassian's infrastructure, under the
+<a href="https://www.atlassian.com/legal/privacy-policy">Atlassian Privacy
+Policy</a> and your agreement with Atlassian. The app vendor has no access to
+your data: it never leaves your Atlassian site's boundary.</p>
+
+<h2>Contact</h2>
+<p>For privacy questions or support, contact:<br>
+<strong>Team Workload Visualizer</strong> ·
+<a href="mailto:workload.visualizer.support@gmail.com">workload.visualizer.support@gmail.com</a></p>
+
+<h2>Changes to this policy</h2>
+<p>If the app's data handling ever changes, this page and the app's
+Marketplace listing will be updated before the change takes effect.</p>
+</body>
+</html>
