@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Security Policy — Team Workload Visualizer for Jira</title>
+<style>
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+         max-width: 760px; margin: 40px auto; padding: 0 20px; color: #172B4D; line-height: 1.6; }
+  h1 { font-size: 28px; } h2 { font-size: 20px; margin-top: 32px; }
+  .meta { color: #626F86; font-size: 14px; }
+  code { background: #F1F2F4; padding: 1px 5px; border-radius: 3px; font-size: 90%; }
+  a { color: #0C66E4; }
+</style>
+</head>
+<body>
+<h1>Security Policy</h1>
+<p class="meta">Team Workload Visualizer for Jira · Last updated: 28 June 2026</p>
+
+<h2>Overview</h2>
+<p>Team Workload Visualizer for Jira ("the app") is built entirely on
+<a href="https://www.atlassian.com/platform/forge">Atlassian Forge</a> and runs
+exclusively inside Atlassian's cloud infrastructure. It has <strong>no external
+servers and declares zero external egress</strong>, so a large part of the app's
+security posture is inherited from, and enforced by, the Atlassian Forge
+platform. This policy describes how Clearwork Apps handles security issues,
+manages vulnerabilities, and what controls are in place.</p>
+
+<h2>Reporting a security issue</h2>
+<p>If you discover a security vulnerability or suspect a security incident,
+please email <a href="mailto:security@clearworkapps.de">security@clearworkapps.de</a>.
+Where possible, include:</p>
+<ul>
+  <li>A description of the issue and the potential impact</li>
+  <li>Steps to reproduce, or a proof of concept</li>
+  <li>The app version and Jira environment, if relevant</li>
+</ul>
+<p>We ask reporters to practise <strong>responsible disclosure</strong>: please
+give us a reasonable opportunity to investigate and remediate before any public
+disclosure. We will not pursue legal action against good-faith security
+research conducted in line with this policy.</p>
+
+<h2>Handling security issues and incidents</h2>
+<p>On receiving a report, we follow a defined process:</p>
+<ol>
+  <li><strong>Acknowledge</strong> — we confirm receipt of the report within
+      <strong>2 business days</strong>.</li>
+  <li><strong>Triage &amp; assess</strong> — we reproduce the issue and assess
+      its severity and impact (using CVSS-style reasoning) within
+      <strong>5 business days</strong>.</li>
+  <li><strong>Remediate</strong> — we develop, test and deploy a fix via the
+      Forge platform. Target timelines by severity: <strong>critical/high
+      within 7 days</strong>, medium within 30 days, low at the next scheduled
+      release.</li>
+  <li><strong>Notify</strong> — where an incident affects customer environments,
+      we notify affected customers and, where the platform is involved, coordinate
+      with Atlassian. Platform-level incidents are handled under Atlassian's own
+      <a href="https://www.atlassian.com/trust/security/security-incident-management">incident
+      management process</a>.</li>
+</ol>
+
+<h2>Vulnerability management</h2>
+<ul>
+  <li><strong>Reporting:</strong> via the security contact above, plus
+      vulnerabilities surfaced by Atlassian's platform tooling and our own
+      reviews.</li>
+  <li><strong>Triage:</strong> each report is assessed for validity, severity
+      and exploitability, then prioritised accordingly.</li>
+  <li><strong>Remediation:</strong> fixes are released through Forge's staged
+      deployment pipeline (development → staging → production) on the severity
+      timelines above.</li>
+  <li><strong>Dependencies:</strong> the app uses a minimal dependency set,
+      which is reviewed and updated periodically. The underlying runtime and
+      platform are managed and patched by Atlassian.</li>
+</ul>
+
+<h2>Key security controls</h2>
+<p><strong>Access control.</strong> The app has no accounts or passwords of its
+own. All authentication and authorisation is handled by Atlassian. The app
+operates on the user's behalf and <strong>respects existing Jira permissions</strong>
+— users only ever see projects and issues they are already allowed to see.
+It requests <strong>least-privilege, read-only scopes</strong>
+(<code>read:jira-work</code>, <code>read:jira-user</code>) plus
+<code>storage:app</code> for its own settings, and cannot modify Jira data.
+Team-wide settings are restricted to Jira administrators.</p>
+
+<p><strong>Data protection.</strong> The app stores no issue data, names or
+emails — only its own configuration in
+<a href="https://developer.atlassian.com/platform/forge/runtime-reference/storage-api/">Forge
+Storage</a>, within your Atlassian product's data boundary. Data is encrypted in
+transit and at rest by the Atlassian platform. The app declares
+<strong>zero external egress</strong> in its Forge manifest, which Atlassian
+enforces technically: the app cannot transmit data to any non-Atlassian system.
+See the <a href="privacy-policy.html">Privacy Policy</a> for full detail.</p>
+
+<p><strong>Monitoring &amp; logging.</strong> The app runs in Atlassian's
+managed Forge runtime, which provides runtime logging and audit capabilities.
+We review Forge application logs when investigating issues, and Atlassian
+monitors the underlying platform on a 24/7 basis.</p>
+
+<p><strong>Secure development.</strong> Source code is kept in version control,
+changes are reviewed before release, and deployments go through Forge's staged
+environments. The minimal dependency footprint reduces supply-chain risk.</p>
+
+<p><strong>Platform security.</strong> Because the app runs on Atlassian Forge,
+it inherits Atlassian Cloud's certified security controls (including SOC 2 and
+ISO 27001) and runs inside Forge's hardened, isolated runtime. Details are
+available at the <a href="https://www.atlassian.com/trust">Atlassian Trust
+Center</a>.</p>
+
+<h2>Contact</h2>
+<p>For security issues:
+<a href="mailto:security@clearworkapps.de">security@clearworkapps.de</a><br>
+For general support:
+<a href="mailto:support@clearworkapps.de">support@clearworkapps.de</a><br>
+<strong>Clearwork Apps</strong></p>
+
+<h2>Changes to this policy</h2>
+<p>This page is updated when our security practices change. The current version
+is always available at this URL.</p>
+</body>
+</html>
